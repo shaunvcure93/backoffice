@@ -1,0 +1,66 @@
+<div class="invoice-list">
+    <div class="title">
+        Outgoing Invoices
+        <button-box [title]="'Create Invoice'" [class]="'green'" [icon]="'add'" (click)="global.navigate('/invoice/add')"></button-box>
+    </div>
+    <div class="summary">
+        <div class="sumbox">
+            <i class="material-symbols-rounded">receipt_long</i>
+            <div class="title">Total Invoice</div>
+            <div class="desc">$230.00</div>
+            <div class="note">No of Invoices : 19</div>
+        </div>
+        <div class="sumbox">
+            <i class="material-symbols-rounded">request_quote</i>
+            <div class="title">Outstanding</div>
+            <div class="desc">$152.00</div>
+            <div class="note">No of Invoices : 19</div>
+        </div>
+        <div class="sumbox">
+            <i class="material-symbols-rounded">schedule</i>
+            <div class="title">Overdue</div>
+            <div class="desc">100</div>
+            <div class="note">No of Invoices : 19</div>
+        </div>
+        <div class="sumbox">
+            <i class="material-symbols-rounded">cancel</i>
+            <div class="title">Cancelled</div>
+            <div class="desc">$230.00</div>
+            <div class="note">No of Invoices : 19</div>
+        </div>
+        <div class="clear-row"></div>
+    </div>
+    <div class="filter">
+        <div class="filterbox status">
+            <input-box  [type]="'dropdown'" 
+                        [class]="'filter_status'"
+                        [title]="'Invoice Status'" 
+                        [value]="filterForm.status.name" 
+                        [list]="filterStatus"
+                        (onInput)="onStatus($event)">
+            </input-box>
+        </div>
+        <div class="filterbox email">
+            <input-box  [type]="'text'" 
+                        [title]="'Receiver Email'" 
+                        [value]="filterForm.email"
+                        (onInput)="filterForm.email = $event">
+            </input-box>
+        </div>
+        <div class="filterbox date">
+            <input-box  [type]="'date'"
+                        [title]="'Due Date'" 
+                        [value]="filterForm.date"
+                        (onInput)="filterForm.date = $event">
+            </input-box>
+        </div>
+        <div class="btnbox">
+            <button-box [title]="'Reset'" [icon]="'refresh'" [style]="{'margin' : '0px 10px 0px 0px'}"></button-box>
+            <button-box [title]="'Search'" [icon]="'search'" [class]="'blue'"></button-box>
+        </div>
+        <div class="clear-row"></div>
+    </div>
+    <div class="table">
+        <table-list [list]="tableData" [data]="dataArray"></table-list>
+    </div>
+</div>

@@ -1,0 +1,91 @@
+<table>
+  <thead>
+      <tr>
+        @for (item of list; track item.code)
+        {
+          <th [style]="item.style">
+            @if(item.type === 'selector')
+            {
+              <div class="selectcover">
+                <div [class]="{'active' : selectedAll}" (click)="selectAll()">
+                  <span></span>
+                </div>
+              </div>
+            }
+            @else
+            {
+              <div class="cover">{{ item.title }}</div>
+            }
+          </th>
+        }
+      </tr>
+  </thead>
+  <tbody>
+    @for (data of dataArray; track data.own_item_index)
+    {
+      <tr>
+        @for (item of list; track item.code)
+        {
+          <td [style]="item.style">
+            @if(item.type === 'status')
+            {
+              <div class="statuscover">
+                <span [style]="{'border': 'solid 1px ' + data[item.param].color, 'color' : data[item.param].color}">{{ data[item.param].title }}</span>
+              </div>
+            }
+            @else if(item.type === 'user')
+            {
+              <div class="usercover">
+                <div>{{ data[item.param].title }}</div>
+                <span>{{ data[item.param].desc }}</span>
+              </div>
+            }
+            @else if(item.type === 'currency')
+            {
+              <div class="currencycover">{{ global.currency.code }} {{ data[item.param].toFixed(2) }}</div>
+            }
+            @else if(item.type === 'selector')
+            {
+              <div class="selectcover">
+                <div [class]="{'active' : data.own_item_select}" (click)="selectOne(data)">
+                  <span></span>
+                </div>
+              </div>
+            }
+            @else if(item.type === 'action')
+            {
+              <div class="actioncover">
+                <span>
+                  <i class="material-symbols-rounded">more_vert</i>
+                </span>
+              </div>
+            }
+            @else
+            {
+              {{ data[item.param] }}
+            }
+          </td>
+          
+        }
+      </tr>
+    }
+  </tbody>
+</table>
+@if(pagi)
+{
+  <div class="pagination">
+    <div class="action">
+      <div class="btn">
+        <span></span>
+        <i class="material-symbols-rounded">arrow_back</i>
+      </div>
+      <input type="text" [value]="searchPage" />
+      <div class="btn">
+        <span></span>
+        <i class="material-symbols-rounded">arrow_forward</i>
+      </div>
+      <div class="text">Page {{ pagi.current_page }} of {{ pagi.last_page }}</div>
+    </div>
+    <div class="clear-row"></div>
+  </div>
+}

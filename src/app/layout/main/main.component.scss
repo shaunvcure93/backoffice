@@ -1,0 +1,358 @@
+.sidemenu
+{
+    display   : block;
+    position  : fixed;
+    width     : 250px;
+    height    : 100%;
+    top       : 0px;
+    left      : 0px;
+    background: #577ff0;
+    overflow-y: auto;
+
+    & > .logo
+    {
+        display            : block;
+        position           : relative;
+        width              : 100%;
+        height             : 82px;
+        line-height        : 82px;
+        box-sizing         : border-box;
+        -webkit-box-sizing : border-box;
+        padding            : 0px 26px 0px 80px;
+        font-size          : 16px;
+        letter-spacing     : 1px;
+        font-weight        : 600;
+        color              : #ffffff;
+        text-transform     : uppercase;
+        cursor             : pointer;
+        user-select        : none;
+        -webkit-user-select: none;
+
+        & > span
+        {
+            display              : block;
+            position             : absolute;
+            width                : 42px;
+            height               : 42px;
+            line-height          : 38px;
+            border-radius        : 12px;
+            -webkit-border-radius: 12px;
+            background           : rgba(255,255,255,0.08);
+            top                  : calc(50% - 21px);
+            left                 : 26px;
+            font-size            : 22px;
+            letter-spacing       : 0px;
+            text-align           : center;
+        }
+    }
+    & > .menu
+    {
+        display            : block;
+        position           : relative;
+        width              : 100%;
+        user-select        : none;
+        -webkit-user-select: none;
+
+        & .main
+        {
+            display           : block;
+            position          : relative;
+            width             : 100%;
+            overflow          : hidden;
+            height            : 46px;
+            transition        : all 0.3s ease;
+            -webkit-transition: all 0.3s ease;
+
+            &.active
+            {
+                & > .mainbox
+                {
+                    background: #3f6eeb;
+
+                    & > span
+                    {
+                        transform        : rotate(90deg);
+                        -webkit-transform: rotate(90deg);
+                    }
+                }
+            }
+            & > .mainbox
+            {
+                display           : block;
+                position          : relative;
+                width             : 100%;
+                height            : 46px;
+                line-height       : 44px;
+                box-sizing        : border-box;
+                -webkit-box-sizing: border-box;
+                padding           : 0px 26px 0px 52px;
+                font-size         : 14px;
+                color             : #ffffff;
+                cursor            : pointer;
+                transition        : all 0.3s ease;
+                -webkit-transition: all 0.3s ease;
+
+                &:hover
+                {
+                    background: #3f6eeb;
+                }
+                & > i
+                {
+                    display    : block;
+                    position   : absolute;
+                    width      : 18px;
+                    height     : 18px;
+                    font-size  : 18px;
+                    line-height: 18px;
+                    top        : calc(50% - 9px);
+                    left       : 26px;
+                }
+                & > span
+                {
+                    display           : block;
+                    position          : absolute;
+                    width             : 16px;
+                    height            : 16px;
+                    top               : calc(50% - 7px);
+                    right             : 16px;
+                    transition        : all 0.3s ease;
+                    -webkit-transition: all 0.3s ease;
+
+                    & > i
+                    {
+                        display    : block;
+                        position   : relative;
+                        width      : 16px;
+                        height     : 16px;
+                        font-size  : 16px;
+                        line-height: 16px;
+                        text-align : right;
+                    }
+                }
+            }
+            & > .list
+            {
+                display           : block;
+                position          : relative;
+                width             : 100%;
+                background        : rgba(255,255,255,0.04);
+                box-sizing        : border-box;
+                -webkit-box-sizing: border-box;
+                padding           : 6px 0px;
+
+                & .subbox
+                {
+                    display           : block;
+                    position          : relative;
+                    width             : 100%;
+                    font-size         : 13px;
+                    height            : 36px;
+                    line-height       : 34px;
+                    color             : #aabcf9;
+                    cursor            : pointer;
+                    box-sizing        : border-box;
+                    -webkit-box-sizing: border-box;
+                    padding           : 0px 20px 0px 52px;
+                    transition        : all 0.3s ease;
+                    -webkit-transition:all 0.3s ease;
+
+                    &:hover
+                    {
+                        color:#ffffff;
+                    }
+                }
+            }
+        }
+    }
+}
+.body
+{
+    display : block;
+    position: relative;
+    width   : calc(100% - 250px);
+    float   : right;
+
+    & > .header
+    {
+        display      : block;
+        position     : relative;
+        width        : 100%;
+        height       : 58px;
+        background   : #ffffff;
+        border-bottom: solid 1px rgba(0,0,0,0.08);
+
+        & > .headercover
+        {
+            display           : block;
+            position          : relative;
+            width             : 100%;
+            height            : 58px;
+            box-sizing        : border-box;
+            -webkit-box-sizing: border-box;
+            padding           : 12px 18px;
+
+            & > .sidenav
+            {
+                display              : block;
+                position             : relative;
+                float                : left;
+                width                : 34px;
+                height               : 34px;
+                cursor               : pointer;
+                border-radius        : 8px;
+                -webkit-border-radius: 8px;
+                box-sizing           : border-box;
+                -webkit-box-sizing   : border-box;
+                background           : #e5e9f7;
+                user-select          : none;
+                -webkit-user-select  : none;
+
+                & > i
+                {
+                    display    : block;
+                    position   : absolute;
+                    width      : 22px;
+                    height     : 22px;
+                    line-height: 22px;
+                    text-align : center;
+                    font-size  : 22px;
+                    color      : #000000;
+                    top        : calc(50% - 11px);
+                    left       : calc(50% - 11px);
+                }
+            }
+            & > .action
+            {
+                display : block;
+                position: relative;
+                float   : right;
+
+                & > .notification
+                {
+                    display            : block;
+                    position           : relative;
+                    width              : 34px;
+                    height             : 34px;
+                    float              : left;
+                    border-radius      : 50%;
+                    border-radius      : 50%;
+                    cursor             : pointer;
+                    background         : #f3f6ff;
+                    user-select        : none;
+                    -webkit-user-select: none;
+                    margin             : 0px 6px 0px 0px;
+
+                    & > i
+                    {
+                        display    : block;
+                        position   : absolute;
+                        width      : 22px;
+                        height     : 22px;
+                        line-height: 22px;
+                        font-size  : 22px;
+                        text-align : center;
+                        top        : calc(50% - 11px);
+                        left       : calc(50% - 11px);
+                    }
+                }
+                & > .news
+                {
+                    display            : block;
+                    position           : relative;
+                    width              : 34px;
+                    height             : 34px;
+                    float              : left;
+                    border-radius      : 50%;
+                    border-radius      : 50%;
+                    cursor             : pointer;
+                    background         : #f3f6ff;
+                    user-select        : none;
+                    -webkit-user-select: none;
+                    margin             : 0px 12px 0px 0px;
+
+                    & > i
+                    {
+                        display    : block;
+                        position   : absolute;
+                        width      : 22px;
+                        height     : 22px;
+                        line-height: 22px;
+                        font-size  : 22px;
+                        text-align : center;
+                        top        : calc(50% - 11px);
+                        left       : calc(50% - 11px);
+                    }
+                }
+                & > .profile
+                {
+                    display           : block;
+                    position          : relative;
+                    float             : left;
+                    cursor            : pointer;
+                    box-sizing        : border-box;
+                    -webkit-box-sizing: border-box;
+                    padding           : 0px 18px 0px 0px;
+
+                    & > span
+                    {
+                        display              : block;
+                        position             : relative;
+                        float                : left;
+                        width                : 34px;
+                        height               : 34px;
+                        border-radius        : 12px;
+                        -webkit-border-radius: 12px;
+                        background-color     : #f3f6ff;
+                        color                : #607ee8;
+                        background-repeat    : no-repeat !important;
+                        background-position  : 50% 50% !important;
+                        background-size      : cover !important;
+                        line-height          : 30px;
+                        font-size            : 20px;
+                        font-weight          : 600;
+                        text-align           : center;
+                        border               : solid 1px rgba(0,0,0,0.1);
+                        box-sizing           : border-box;
+                        -webkit-box-sizing   : border-box;
+                        margin               : 0px 6px 0px 0px;
+                    }
+                    & > .name
+                    {
+                        display           : block;
+                        position          : relative;
+                        float             : left;
+                        height            : 34px;
+                        box-sizing        : border-box;
+                        -webkit-box-sizing: border-box;
+                        line-height       : 34px;
+                        font-size         : 14px;
+                        white-space       : nowrap;
+                        overflow          : hidden;
+                        text-overflow     : ellipsis;
+                    }
+                    & > i
+                    {
+                        display    : block;
+                        position   : absolute;
+                        width      : 16px;
+                        line-height: 16px;
+                        height     : 16px;
+                        font-size  : 16px;
+                        text-align : right;
+                        top        : calc(50% - 7px);
+                        right      : 0px;
+                    }
+                }
+            }
+        }
+    }
+    & > .container
+    {
+        display           : block;
+        position          : relative;
+        width             : 100%;
+        box-sizing        : border-box;
+        -webkit-box-sizing: border-box;
+        padding           : 20px;
+    }
+}

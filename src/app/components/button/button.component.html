@@ -1,0 +1,17 @@
+<div class="button-box" 
+     [title]="title"
+     [class]="class + ' ' + (disabled ? ' disabled' : '') + ' ' + (icon && title ? 'icontext' : '') + ' ' + (icon && !title ? 'icon' : '')" 
+     [style]="style">
+  <div class="hover"></div>
+  <div class="loader" [class]="{'loading' : loading}"></div>
+  @if(icon)
+  {
+    <i class="material-symbols-rounded">{{ icon }}</i>
+  }
+  @if(title)
+  {
+    <div class="btncover">
+      {{ title }}
+    </div>
+  }
+</div>

@@ -1,0 +1,142 @@
+<div class="invoice-list">
+    <div class="title">
+        Incoming Invoices
+        <button-box [title]="'Create Invoice'" [class]="'green'" [icon]="'add'" (click)="global.navigate('/invoice/add')"></button-box>
+    </div>
+    <div class="summary">
+        <div class="title">Your Crypto Wallet</div>
+        <div class="desc">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</div>
+        <div class="walletbox" (click)="showWallet()">
+            <div class="image"></div>
+            <div class="name">USDT</div>
+            <div class="amount">
+                0.00
+                <i class="material-symbols-rounded">chevron_right</i>
+            </div>
+        </div>
+        <div class="actionbox">
+            <button-box [title]="'Deposit Crypto'" [icon]="'add'" [class]="'white'" [style]="{'margin' : '0px 8px 0px 0px'}" (click)="depositCrypto()"></button-box>
+            <button-box [title]="'Convert'" [icon]="'sync'" [disabled]="true" [style]="{'margin' : '0px 8px 0px 0px'}"></button-box>
+            <button-box [title]="'Withdraw Cash'" [icon]="'payments'" [disabled]="true" [style]="{'margin' : '0px 8px 0px 0px'}"></button-box>
+            <button-box [title]="'Withdraw Crypto'" [icon]="'monetization_on'" [class]="'white'" (click)="withdrawCrypto()"></button-box>
+        </div>
+        <div class="clear-row"></div>
+    </div>
+    <div class="filter">
+        <div class="filterbox status">
+            <input-box  [type]="'dropdown'" 
+                        [class]="'filter_status'"
+                        [title]="'Invoice Status'" 
+                        [value]="filterForm.status.name" 
+                        [list]="filterStatus"
+                        (onInput)="onStatus($event)">
+            </input-box>
+        </div>
+        <div class="filterbox email">
+            <input-box  [type]="'text'" 
+                        [title]="'Sender Email'" 
+                        [value]="filterForm.email"
+                        (onInput)="filterForm.email = $event">
+            </input-box>
+        </div>
+        <div class="filterbox date">
+            <input-box  [type]="'date'"
+                        [title]="'Due Date'" 
+                        [value]="filterForm.date"
+                        (onInput)="filterForm.date = $event">
+            </input-box>
+        </div>
+        <div class="btnbox">
+            <button-box [title]="'Reset'" [icon]="'refresh'" [style]="{'margin' : '0px 10px 0px 0px'}"></button-box>
+            <button-box [title]="'Search'" [icon]="'search'" [class]="'blue'"></button-box>
+        </div>
+        <div class="clear-row"></div>
+    </div>
+    <div class="table">
+        <table-list [list]="tableData" [data]="dataArray"></table-list>
+    </div>
+</div>
+<dialog-pop [show]="showDialog" [title]="dialogTitle" [width]="dialogWidth" [close]="dialogCancel" [action]="dialogAction" [close]="false" (onClose)="closeDialog()" (onAction)="onDialogActionClick()">
+    @if(dialogType === 1)
+    {
+        <div class="wallet-list">
+            <div class="box">
+                <div class="image"></div>
+                <div class="name">ERC-20</div>
+                <div class="amount">12.00</div>
+            </div>
+            <div class="box">
+                <div class="image"></div>
+                <div class="name">BITCOIN</div>
+                <div class="amount">104.88</div>
+            </div>
+            <div class="box">
+                <div class="image"></div>
+                <div class="name">DOGDE COIN</div>
+                <div class="amount">99.40</div>
+            </div>
+        </div>
+    }
+    @else if(dialogType === 2)
+    {
+        <div class="deposit-crypto">
+            <div class="cover">
+                @for (crypto of cryptoData; track crypto.code)
+                {
+                    <div class="cryptobox" [class]="{'active' : crypto.status}" (click)="selectCrypto(crypto)">
+                        <div class="image"></div>
+                        <div class="name">{{ crypto.name }}</div>
+                        <div class="amount">{{ crypto.amount }}</div>
+                        <div class="selector"><span></span></div>
+                    </div>
+                }
+            </div>
+        </div>
+    }
+    @else if(dialogType === 3)
+    {
+        <div class="selected-crypto">
+            <div class="image"></div>
+            <div class="note">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</div>
+        </div>
+    }
+    @else if(dialogType === 4)
+    {
+        <div class="withdraw-crypto">
+            <div class="cover">
+                <input-box  [type]="'dropdown'" 
+                            [class]="'withdraw_token'"
+                            [title]="'Crypto Token'" 
+                            [value]="withdrawForm.token.name" 
+                            [list]="tokenData"
+                            [style]="{'margin' : '0px 0px 18px 0px'}"
+                            (onInput)="onToken($event)">
+                </input-box>
+                <input-box  [type]="'text'"
+                            [title]="'Quantity'" 
+                            [value]="withdrawForm.qty"
+                            [style]="{'margin' : '0px 0px 18px 0px'}"
+                            (onInput)="withdrawForm.qty = $event">
+                </input-box>
+                <input-box  [type]="'text'"
+                            [title]="'Withdraw To (Wallet Address)'" 
+                            [value]="withdrawForm.address"
+                            (onInput)="withdrawForm.address = $event">
+                </input-box>
+            </div>
+        </div>
+    }
+    @else if(dialogType === 5)
+    {
+        <div class="withdraw-otp">
+            <div class="desc">One Time Password has been sent to your email, please do check on the spam or junk folder too.</div>
+            <input-box  [type]="'otp6'"
+                        [title]="''"
+                        [style]="{'margin' : '0px 0px 14px 0px'}"
+                        [value]="withdrawForm.otp"
+                        (onInput)="withdrawForm.otp = $event">
+            </input-box>
+            <div class="resend" [class]="{'active' : resendCounter === 0}">{{ resendNote }}</div>
+        </div>
+    }
+</dialog-pop>

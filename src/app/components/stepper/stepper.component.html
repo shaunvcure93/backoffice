@@ -1,0 +1,10 @@
+<div class="stepper" [style]="style">
+  @for (item of data; track item)
+  {
+    <div class="stepbox" [class]="{'active' : item.number == step}" (click)="selectStep(item)">
+      <div class="num">{{ item.number }}</div>
+      <div class="text">{{ item.text }}</div>
+      <div class="line"><span [class]="{'active' : item.status}"></span></div>
+    </div>
+  }
+</div>

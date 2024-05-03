@@ -1,0 +1,40 @@
+<div class="dialog" [class]="{'active' : show}">
+  <div class="overlay"></div>
+  <div class="dialogcover" [style]="{'max-width' : width + 'px'}">
+    @if(title)
+    {
+      <div class="title">
+        {{ title }}
+        <span (click)="closeDialog()">
+          <i class="material-symbols-rounded">close</i>
+        </span>
+      </div>
+    }
+    <div class="content">
+      @if(text)
+      {
+        <div class="text">{{ text }}</div>
+      }
+      <div class="slot">
+        <ng-content></ng-content>
+      </div>
+      @if(close || action)
+      {
+        <div class="action">
+          @if(close)
+          {
+            <div class="btn" (click)="closeDialog()">
+              <button-box [title]="'Cancel'" [style]="{'width': '100%'}"></button-box>
+            </div>
+          }
+          @if(action)
+          {
+            <div class="btn">
+              <button-box [class]="action.class" [title]="action.title" [loading]="action.loading" [style]="{'width': '100%'}" (onClick)="onClickAction()" (click)="onClickAction()"></button-box>
+            </div>
+          }
+        </div>
+      }
+    </div>
+  </div>
+</div>

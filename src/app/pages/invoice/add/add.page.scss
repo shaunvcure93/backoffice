@@ -1,0 +1,341 @@
+.add-invoice
+{
+    display : block;
+    position: relative;
+    width   : 100%;
+
+    & > .title
+    {
+        display    : block;
+        position   : relative;
+        width      : 100%;
+        font-size  : 20px;
+        font-weight: 600;
+        line-height: 18px;
+        height     : 20px;
+        margin     : 0px 0px 20px 0px;
+    }
+    & > .form
+    {
+        display              : block;
+        position             : relative;
+        width                : 100%;
+        padding              : 20px;
+        box-sizing           : border-box;
+        -webkit-box-sizing   : border-box;
+        background           : #ffffff;
+        border-radius        : 4px;
+        -webkit-border-radius: 4px;
+        border               : solid 1px rgba(0,0,0,0.2);
+
+        & .formbox
+        {
+            display : block;
+            position: relative;
+            
+            &.id
+            {
+                width : 300px;
+                margin: 0px 0px 18px 0px;
+            }
+            &.title
+            {
+                width : 300px;
+                margin: 0px 0px 18px 0px;
+            }
+            &.issue-date
+            {
+                width : 300px;
+                float : left;
+                margin: 0px 18px 18px 0px;
+            }
+            &.due-date
+            {
+                width : 300px;
+                float : left;
+                margin: 0px 0px 18px 0px;
+            }
+            &.desc
+            {
+                width  : 618px;
+            }
+            &.new-receiver
+            {
+                width : 110px;
+                margin: 0px 0px 18px 0px;
+            }
+            &.receiver
+            {
+                width  : 300px;
+                margin : 0px 18px 18px 0px;
+            }
+            &.receiver-name
+            {
+                width  : 300px;
+                margin : 0px 18px 18px 0px;
+            }
+            &.receiver-email
+            {
+                width  : 300px;
+                margin : 0px 0px 18px 0px;
+            }
+            &.product
+            {
+                width  : calc(34% - 12px);
+                margin : 0px 18px 18px 0px;
+            }
+            &.tt
+            {
+                width  : calc(66% - 24px + 18px);
+                margin : 0px 0px 18px 0px;
+            }
+            &.name
+            {
+                width  : calc(34% - 12px);
+                margin : 0px 18px 18px 0px;
+            }
+            &.qty
+            {
+                width  : calc(33% - 12px);
+                margin : 0px 18px 18px 0px;
+            }
+            &.rate
+            {
+                width  : calc(33% - 12px);
+                margin : 0px 0px 18px 0px;
+            }
+            &.type
+            {
+                width  : calc(34% - 12px);
+                margin : 0px 18px 18px 0px;
+            }
+            &.discount
+            {
+                width  : calc(33% - 12px);
+                margin : 0px 18px 18px 0px;
+            }
+            &.tax
+            {
+                width  : calc(33% - 12px);
+                margin : 0px 0px 18px 0px;
+            }
+            &.round-off
+            {
+                width : 110px;
+                margin: 0px 0px 18px 0px;
+            }
+        }
+
+        & > .cover
+        {
+            display           : block;
+            position          : relative;
+            box-sizing        : border-box;
+            -webkit-box-sizing: border-box;
+            padding           : 20px;
+            width             : 100%;
+
+            
+            & .btnbox
+            {
+                display : block;
+                position: relative;
+                width   : 100%;
+                margin  : 0px 0px 20px 0px;
+
+                & > .left
+                {
+                    display : block;
+                    position: relative;
+                    float   : left;
+                }
+                & > .right
+                {
+                    display : block;
+                    position: relative;
+                    float   : right;
+                }
+            }
+            & > table
+            {
+                position       : relative;
+                width          : 100%;
+                border         : solid 1px rgba(0,0,0,0.1);
+                border-collapse: collapse;
+
+                & .product
+                {
+                    text-align:left;
+                }
+                & .qty
+                {
+                    text-align:center;
+                }
+                & .unit
+                {
+                    text-align:center;
+                }
+                & .rate
+                {
+                    text-align:center;
+                }
+                & .discount
+                {
+                    text-align:center;
+                }
+                & .tax
+                {
+                    text-align:center;
+                }
+                & .amount
+                {
+                    text-align:center;
+                }
+                & > thead
+                {
+                    background:#4e546a;
+
+                    & tr
+                    {
+                        & th
+                        {
+                            & > div
+                            {
+                                display           : block;
+                                position          : relative;
+                                width             : 100%;
+                                box-sizing        : border-box;
+                                -webkit-box-sizing: border-box;
+                                padding           : 0px 14px;
+                                height            : 32px;
+                                line-height       : 30px;
+                                font-size         : 12px;
+                                font-weight       : normal;
+                                color             : #ffffff;
+                                letter-spacing    : 0.4px;
+                            }
+                        }
+                    }
+                }
+                & > tbody
+                {
+                    background:#ffffff;
+
+                    & tr
+                    {
+                        & td
+                        {
+                            & > div
+                            {
+                                display           : block;
+                                position          : relative;
+                                width             : 100%;
+                                box-sizing        : border-box;
+                                -webkit-box-sizing: border-box;
+                                padding           : 0px 14px;
+                                height            : 46px;
+                                line-height       : 44px;
+                                font-size         : 14px;
+                            }
+                            & > span
+                            {
+                                display              : block;
+                                position             : relative;
+                                width                : 24px;
+                                height               : 24px;
+                                border-radius        : 8px;
+                                -webkit-border-radius: 8px;
+                                background           : #fae5e5;
+                                cursor               : pointer;
+                                user-select          : none;
+                                -webkit-user-select  : none;
+
+                                & > i
+                                {
+                                    display    : block;
+                                    position   : absolute;
+                                    width      : 18px;
+                                    height     : 18px;
+                                    line-height: 18px;
+                                    text-align : center;
+                                    font-size  : 18px;
+                                    top        : calc(50% - 9px);
+                                    left       : calc(50% - 9px);
+                                    color      : #940000;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            & > .summary
+            {
+                display : block;
+                position: relative;
+                width   : 100%;
+
+                & .sumbox
+                {
+                    display           : block;
+                    position          : relative;
+                    width             : 100%;
+                    overflow          : hidden;
+                    border-bottom     : solid 1px rgba(0,0,0,0.1);
+                    box-sizing        : border-box;
+                    -webkit-box-sizing: border-box;
+                    padding           : 10px 0px;
+
+                    &:last-child
+                    {
+                        border:none;
+
+                        & > div
+                        {
+                            font-weight:bold;
+                        }
+                        & > span
+                        {
+                            font-weight:bold;
+                        }
+                    }
+                    & > div
+                    {
+                        display  : block;
+                        position : relative;
+                        float    : left;
+                        font-size: 14px;
+                    }
+                    & > span
+                    {
+                        display  : block;
+                        position : relative;
+                        float    : right;
+                        font-size: 14px;
+                    }
+                }
+            }
+            
+        }
+        
+    }
+    & > .bottom
+    {
+        display : block;
+        position: relative;
+        width   : 100%;
+        margin  : 20px 0px 0px 0px;
+
+        & > .left
+        {
+            display : block;
+            position: relative;
+            float   : left;
+        }
+        & > .right
+        {
+            display : block;
+            position: relative;
+            float   : right;
+        }
+    }
+}

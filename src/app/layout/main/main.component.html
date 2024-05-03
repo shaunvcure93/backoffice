@@ -1,0 +1,60 @@
+<div class="sidemenu">
+    <div class="logo">
+        <span>B</span>
+        Backoffice
+    </div>
+    <div class="menu">
+        @for (mainbox of menuData; track mainbox.id)
+        {
+            <div class="main" [class]="{'active' : mainbox.show}" [style]="{'height' : mainbox.show && mainbox.list && mainbox.list.length > 0 ? (mainbox.list.length * 36 + 12 + 46) + 'px' : '46px'}">
+                <div class="mainbox" (click)="selectMainBox(mainbox)">
+                    <i class="material-symbols-rounded">{{ mainbox.icon }}</i>
+                    {{ mainbox.name }}
+
+                    @if(mainbox.list && mainbox.list.length > 0)
+                    {
+                        <span><i class="material-symbols-rounded">chevron_right</i></span>
+                    }
+                </div>
+                @if(mainbox.list && mainbox.list.length > 0)
+                {
+                    <div class="list">
+                        @for (subbox of mainbox.list; track subbox.id)
+                        {
+                            <div class="subbox" (click)="global.navigate(subbox.route)">{{ subbox.name }}</div>
+                        }
+                    </div>
+                }
+                <!-- <div class="list">
+                    <div class="subbox">Dashboard</div>
+                    <div class="subbox">About Us</div>
+                </div> -->
+            </div>
+        }
+    </div>
+</div>
+<div class="body">
+    <div class="header">
+        <div class="headercover">
+            <div class="sidenav">
+                <i class="material-symbols-rounded">menu</i>
+            </div>
+            <div class="action">
+                <div class="notification">
+                    <i class="material-symbols-rounded">notifications</i>
+                </div>
+                <div class="news">
+                    <i class="material-symbols-rounded">mail</i>
+                </div>
+                <div class="profile">
+                    <span>S</span>
+                    <div class="name">Shaun Lee</div>
+                    <i class="material-symbols-rounded">expand_more</i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <router-outlet></router-outlet>
+    </div>
+</div>

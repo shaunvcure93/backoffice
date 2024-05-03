@@ -1,0 +1,23 @@
+<div class="inventory-list">
+    <div class="title">
+        Inventory
+        <button-box [title]="'Add New Item'" [class]="'green'" [icon]="'add'" (click)="global.navigate('/invoice/add')"></button-box>
+    </div>
+    <div class="filter">
+        <div class="filterbox name">
+            <input-box  [type]="'text'" 
+                        [title]="'Item Name'" 
+                        [value]="filterForm.name"
+                        (onInput)="filterForm.name = $event">
+            </input-box>
+        </div>
+        <div class="btnbox">
+            <button-box [title]="'Reset'" [icon]="'refresh'" [style]="{'margin' : '0px 10px 0px 0px'}"></button-box>
+            <button-box [title]="'Search'" [icon]="'search'" [class]="'blue'"></button-box>
+        </div>
+        <div class="clear-row"></div>
+    </div>
+    <div class="table">
+        <table-list [list]="tableData" [data]="dataArray"></table-list>
+    </div>
+</div>

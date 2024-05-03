@@ -1,0 +1,287 @@
+<div class="add-invoice">
+    <div class="title">Create New Invoice</div>
+    <stepper-box [data]="stepData" [step]="step" [style]="{'margin' : '0px 0px 20px 0px'}" (onStep)="selectStep($event)"></stepper-box>
+    @if(step === 1)
+    {
+        <div class="form">
+            <div class="formbox id">
+                <input-box  [title]="'Invoice Number'"
+                            [type]="'text'"
+                            [value]="formData.invoice_number"
+                            (onInput)="formData.invoice_number = $event"
+                           >
+                </input-box>
+            </div>
+            <div class="formbox title">
+                <input-box  [title]="'Invoice Title'"
+                            [type]="'text'"
+                            [value]="formData.title"
+                            (onInput)="formData.title = $event"
+                           >
+                </input-box>
+            </div>
+            <div class="clear-row"></div>
+            <div class="formbox issue-date">
+                <input-box  [title]="'Invoice Date'"
+                            [type]="'date'"
+                            [value]="formData.issue_date"
+                            (onInput)="formData.issue_date = $event"
+                           >
+                </input-box>
+            </div>
+            <div class="formbox due-date">
+                <input-box  [title]="'Due Date'"
+                            [type]="'date'"
+                            [value]="formData.due_date"
+                            (onInput)="formData.due_date = $event"
+                           >
+                </input-box>
+            </div>
+            <div class="clear-row"></div>
+            <!-- <div class="formbox status">
+                <input-box  [type]="'dropdown'" 
+                            [class]="'invoice_status'"
+                            [title]="'Status'" 
+                            [value]="formData.status.name" 
+                            [list]="statusData"
+                            (onInput)="onStatus($event)">
+                </input-box>
+            </div> -->
+            <div class="formbox desc">
+                <input-box  [type]="'text'" 
+                            [title]="'Description (Optional)'" 
+                            [value]="formData.description" 
+                            (onInput)="formData.description = $event">
+                </input-box>
+            </div>
+        </div>
+    }
+    @else if(step === 2)
+    {
+        <div class="form">
+            <div class="formbox new-receiver">
+                <input-box  [title]="'New Receiver?'"
+                            [type]="'switch'"
+                            [value]="formData.receiver.new"
+                            (onInput)="formData.receiver.new = $event"
+                           >
+                </input-box>
+            </div>
+            <div class="cover">
+                
+                <div class="clear-row"></div>
+                @if(formData.receiver.new === 'yes')
+                {
+                    <div class="formbox receiver-name">
+                        <input-box  [title]="'Receiver Name'"
+                                    [type]="'text'"
+                                    [value]="formData.receiver.name"
+                                    (onInput)="formData.receiver.name = $event"
+                                   >
+                        </input-box>
+                    </div>
+                    <div class="formbox receiver-email">
+                        <input-box  [title]="'Receiver Email'"
+                                    [type]="'text'"
+                                    [value]="formData.receiver.email"
+                                    (onInput)="formData.receiver.email = $event"
+                                   >
+                        </input-box>
+                    </div>
+                }
+                @else
+                {
+                    <div class="formbox receiver">
+                        <input-box  [title]="'Saved Receiver'"
+                                    [class]="'receiver_list'"
+                                    [type]="'dropinfo'"
+                                    [value]="formData.receiver.name"
+                                    [list]="customerData"
+                                    (onInput)="onReceiver($event)"
+                                   >
+                        </input-box>
+                    </div>
+                }
+                <div class="clear-row"></div>
+            </div>
+        </div>
+    }
+    <div class="bottom">
+        <div class="left">
+            <button-box [title]="'Reset'" [icon]="'refresh'"></button-box>
+        </div>
+        <div class="right">
+            @if(step !== 1)
+            {
+                <button-box [title]="'Back'" [icon]="'arrow_back'" [class]="'blue'" [style]="{'margin' : '0px 10px 0px 0px'}"></button-box>
+            }
+            <button-box [title]="'Next'" [icon]="'arrow_forward'" [class]="'green'"></button-box>
+        </div>
+        <div class="clear-row"></div>
+    </div>
+    
+    
+    <!-- <div class="form">
+        <div class="title">Products Listing</div>
+        <div class="cover">
+            <div class="formbox product">
+                <input-box  [title]="'Product List'"
+                            [class]="'product_list'"
+                            [type]="'dropinfo'"
+                            [value]="productForm.title"
+                            [list]="productData"
+                            (onInput)="onProduct($event)"
+                           >
+                </input-box>
+            </div>
+            <div class="formbox tt">
+                <input-box  [title]="'Product Title'"
+                            [type]="'text'"
+                            [value]="productForm.title"
+                            (onInput)="productForm.title = $event"
+                           >
+                </input-box>
+            </div>
+            <div class="clear-row"></div>
+            <div class="formbox name">
+                <input-box  [title]="'Product Name'"
+                            [type]="'text'"
+                            [value]="productForm.name"
+                            (onInput)="productForm.name = $event"
+                           >
+                </input-box>
+            </div>
+            <div class="formbox qty">
+                <input-box  [title]="'Product Quantity'"
+                            [type]="'text'"
+                            [value]="productForm.qty"
+                            (onInput)="productForm.qty = $event"
+                           >
+                </input-box>
+            </div>
+            <div class="formbox rate">
+                <input-box  [title]="'Product Rate'"
+                            [type]="'text'"
+                            [value]="productForm.rate"
+                            (onInput)="productForm.rate = $event"
+                           >
+                </input-box>
+            </div>
+            <div class="clear-row"></div>
+            <div class="formbox type">
+                <input-box  [title]="'Discount Type'"
+                            [class]="'discount_type'"
+                            [type]="'dropdown'"
+                            [value]="productForm.discount_type_name"
+                            [list]="discountData"
+                            (onInput)="onDiscountType($event)"
+                           >
+                </input-box>
+            </div>
+            <div class="formbox discount">
+                <input-box  [title]="'Discount'"
+                            [type]="'text'"
+                            [value]="productForm.discount"
+                            (onInput)="productForm.discount = $event"
+                           >
+                </input-box>
+            </div>
+            <div class="formbox tax">
+                <input-box  [title]="'Tax'"
+                            [type]="'text'"
+                            [value]="productForm.tax"
+                            (onInput)="productForm.tax = $event"
+                           >
+                </input-box>
+            </div>
+            <div class="clear-row"></div>
+            <div class="btnbox">
+                <div class="left">
+                    <button-box [title]="'Reset'"
+                                [icon]="'refresh'">
+                    </button-box>
+                </div>
+                <div class="right">
+                    <button-box [title]="'Save & Add Product'"
+                                [icon]="'save'"
+                                [class]="'green'"
+                                [style]="{'margin' : '0px 10px 0px 0px'}"
+                                (click)="addProduct(1)">
+                    </button-box>
+                    <button-box [title]="'Add Product'"
+                                [class]="'blue'"
+                                [icon]="'add'"
+                                (click)="addProduct(0)">
+                    </button-box>
+                </div>
+                <div class="clear-row"></div>
+            </div>
+            <div class="clear-row"></div>
+            <table>
+                <thead>
+                    <tr>
+                        <th class="product"><div>Product/Service</div></th>
+                        <th class="qty"><div>Quantity</div></th>
+                        <th class="unit"><div>Unit</div></th>
+                        <th class="rate"><div>Rate</div></th>
+                        <th class="discount"><div>Discount</div></th>
+                        <th class="tax"><div>Tax</div></th>
+                        <th class="amount"><div>Amount</div></th>
+                        <th class="action"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (item of formData.product; track item.index)
+                    {
+                        <tr>
+                            <td class="product"><div>{{ item.name }}</div></td>
+                            <td class="qty"><div>{{ item.qty }}</div></td>
+                            <td class="unit"><div>Psc</div></td>
+                            <td class="rate"><div>{{ item.rate }}</div></td>
+                            <td class="discount"><div>{{ checkDiscountByType(item) }}</div></td>
+                            <td class="tax"><div>{{ item.tax }}</div></td>
+                            <td class="amount"><div>{{ item.amount }}</div></td>
+                            <td class="action">
+                                <span (click)="removeProduct(item)">
+                                    <i class="material-symbols-rounded">delete</i>
+                                </span>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="form">
+        <div class="title">Total Summary</div>
+        <div class="cover">
+            <div class="formbox round-off">
+                <input-box  [title]="'Round Off?'"
+                            [type]="'switch'"
+                            [value]="formData.round_off"
+                            (onInput)="formData.round_off = $event"
+                           >
+                </input-box>
+            </div>
+            <div class="summary">
+                <div class="sumbox">
+                    <div>Taxable Amount</div>
+                    <span>{{ global.currency.code }} {{ summaryData.taxable_amount.toFixed(2) }}</span>
+                </div>
+                <div class="sumbox">
+                    <div>Discount</div>
+                    <span>{{ global.currency.code }} {{ summaryData.discount.toFixed(2) }}</span>
+                </div>
+                <div class="sumbox">
+                    <div>Round Off</div>
+                    <span>{{ global.currency.code }} {{ summaryData.round_off_amount.toFixed(2) }}</span>
+                </div>
+                <div class="sumbox">
+                    <div>Total Amount</div>
+                    <span>{{ global.currency.code }} {{ summaryData.total_amount.toFixed(2) }}</span>
+                </div>
+            </div>
+            <div class="clear-row"></div>
+        </div>
+    </div> -->
+</div>

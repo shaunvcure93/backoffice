@@ -1,0 +1,144 @@
+@if(type === 'text')
+{
+  <div class="inputbox" [class]="class + ' ' + (disabled ? 'disabled' : '')" [style]="style">
+    @if(title)
+    {
+      <div class="title">{{ title }}</div>
+    }
+    <div class="textbox">
+      <input type="text" [value]="valueText" />
+    </div>
+  </div>
+}
+@else if(type === 'date')
+{
+  <div class="inputbox" [class]="class + ' ' + (disabled ? 'disabled' : '')" [style]="style">
+    @if(title)
+    {
+      <div class="title">{{ title }}</div>
+    }
+    <div class="datebox">
+      <div class="selected">
+        <input type="text" [value]="valueDate" />
+      </div>
+      <div class="cover">
+        <input type="date" (input)="checkDateIndicator($event)" />
+      </div>
+    </div>
+  </div>
+}
+@else if(type === 'dropdown')
+{
+  <div class="inputbox" [class]="disabled ? 'disabled' : ''" [style]="style">
+    @if(title)
+    {
+      <div class="title">{{ title }}</div>
+    }
+    <div class="dropdownbox" [class]="(showDropdown ? 'active' : '') + ' ' + 'dropdown_' + class">
+      <div class="selected" (click)="toggleDropdown($event)">
+        {{ selectedDropdown }}
+        <i class="material-symbols-rounded">expand_more</i>
+      </div>
+      <div class="list">
+        @if(search)
+        {
+          <div class="search"></div>
+        }
+        <div class="scroll">
+          <div class="cover">
+            @for (item of list; track item.value)
+            {
+              <div class="item" (click)="selectDropdownItem(item)">{{ item.name }}</div>
+            }
+            @if(more)
+            {
+              <div class="more"></div>
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+}
+@else if(type === 'dropinfo')
+{
+  <div class="inputbox" [class]="class + ' ' + (disabled ? 'disabled' : '')" [style]="style">
+    @if(title)
+    {
+      <div class="title">{{ title }}</div>
+    }
+    <div class="dropinfobox" [class]="(showDropinfo ? 'active' : '') + ' ' + 'dropinfo_' + class">
+      <div class="selected" (click)="toggleDropinfo($event)">
+        {{ selectedDropinfo }}
+        <i class="material-symbols-rounded">expand_more</i>
+      </div>
+      <div class="list">
+        @if(search)
+        {
+          <div class="search"></div>
+        }
+        <div class="scroll">
+          <div class="cover">
+            @for (item of list; track item.value)
+            {
+              <div class="item" (click)="selectDropinfoItem(item)">
+                <div>{{ item.title }}</div>
+                <span>{{ item.desc }}</span>
+              </div>
+            }
+            @if(more)
+            {
+              <div class="more"></div>
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+}
+@else if(type === 'switch')
+{
+  <div class="inputbox" [class]="class + ' ' + (disabled ? 'disabled' : '')" [style]="style">
+    @if(title)
+    {
+      <div class="title">{{ title }}</div>
+    }
+    <div class="switchbox" [class]="{'active' : selectedSwitch}">
+      <div (click)="switch('yes')">Yes</div>
+      <div (click)="switch('no')">No</div>
+      <span></span>
+    </div>
+  </div>
+}
+@else if(type === 'otp6')
+{
+  <div class="inputbox" [class]="class + ' ' + (disabled ? 'disabled' : '')" [style]="style">
+    @if(title)
+    {
+      <div class="title">{{ title }}</div>
+    }
+    <div class="otp6box">
+      <input class="otp6-1" type="text" [value]="otp6Input[0]" (input)="onOtp6Input($event, 1)" (focus)="onOtp6Focus($event, 1)" />
+      <input class="otp6-2" type="text" [value]="otp6Input[1]" (input)="onOtp6Input($event, 2)" (focus)="onOtp6Focus($event, 2)" />
+      <input class="otp6-3" type="text" [value]="otp6Input[2]" (input)="onOtp6Input($event, 3)" (focus)="onOtp6Focus($event, 3)" />
+      <input class="otp6-4" type="text" [value]="otp6Input[3]" (input)="onOtp6Input($event, 4)" (focus)="onOtp6Focus($event, 4)" />
+      <input class="otp6-5" type="text" [value]="otp6Input[4]" (input)="onOtp6Input($event, 5)" (focus)="onOtp6Focus($event, 5)" />
+      <input class="otp6-6" type="text" [value]="otp6Input[5]" (input)="onOtp6Input($event, 6)" (focus)="onOtp6Focus($event, 6)" />
+    </div>
+  </div>
+}
+@else if(type === 'upload')
+{
+  <div class="inputbox" [class]="class + ' ' + (disabled ? 'disabled' : '')" [style]="style">
+    @if(title)
+    {
+      <div class="title">{{ title }}</div>
+    }
+    <div class="box">
+      <label for="'upload' + class">
+        <i class="material-symbols-rounded">upload</i>
+        <input type="file" [id]="'upload' + class" />
+      </label>
+    </div>
+  </div>
+}
